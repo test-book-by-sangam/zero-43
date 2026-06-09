@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>प्यारे नन्हें बेटे को Online Test (Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - प्यारे नन्हें बेटे को (विनोद कुमार शुक्ल) - Hindi 12th Objective Questions
+                { q: "1. विनोद कुमार शुक्ल ने कौन-सी कविता लिखी है ?", opt: ["अधिनायक", "प्यारे नन्हें बेटे को", "पुत्र वियोग", "हार-जीत"], ans: 1 },
+                { q: "2. रघुवीर सहाय स्मृति पुरस्कार विनोद कुमार शुक्ल को कब प्रदान किया गया ?", opt: ["1988 ई० में", "1990 ई० में", "1992 ई० में", "1994 ई० में"], ans: 1 },
+                { q: "3. 1999 में विनोद कुमार शुक्ल को कौन-सा पुरस्कार प्रदान किया गया ?", opt: ["रघुवीर सहाय स्मृति पुरस्कार", "दयावती मोदी कवि शेखर सम्मान", "साहित्य अकादमी पुरस्कार", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "4. विनोद कुमार शुक्ल का पहला कविता संग्रह 'लगभग जयहिंद' पहचान सीरीज के अन्तर्गत कब प्रकाशित हुआ ?", opt: ["1971 ई० में", "1972 ई० में", "1973 ई० में", "1974 ई० में"], ans: 0 },
+                { q: "5. विनोद कुमार शुक्ल किस विश्वविद्यालय में एसोशिएट प्रोफेसर रहे हैं ?", opt: ["राजेन्द्र प्रसाद कृषि विश्वविद्यालय", "चन्द्रशेखर आजाद कृषि विश्वविद्यालय", "इंदिरा गाँधी कृषि विश्वविद्यालय", "नरेन्द्र देव कृषि विश्वविद्यालय"], ans: 2 },
+                { q: "6. विनोद कुमार शुक्ल का पहला कविता संग्रह कौन-सा है ?", opt: ["वह आदमी नया गरम कोट पहनकर चला गया विचार की तरह", "सबकुछ होना बचा रहेगा", "अतिरिक्त नहीं", "लगभग जयहिंद"], ans: 3 },
+                { q: "7. 'प्यारे नन्हें बेटे को' कविता किस शैली में लिखी गई है ?", opt: ["व्यंग्यात्मक शैली", "वार्तालाप शैली", "प्रतीकात्मक शैली", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "8. 'प्यारे नन्हें बेटे को' कविता का नायक कहाँ का रहने वाला है ?", opt: ["छत्तीसगढ़", "उत्तराखण्ड", "मध्यप्रदेश", "हिमाचल प्रदेश"], ans: 1 },
+                { q: "9. विनोद कुमार शुक्ल बीसवीं शती के किस दशक में एक कवि के रूप में सामने आए थे ?", opt: ["पाँचवे-छठे दशक में", "छठे-सातवें दशक में", "सातवें-आठवें दशक में", "आठवें-नौवें दशक में"], ans: 2 },
+                { q: "10. विनोद कुमार शुक्ल की रचना 'महाविद्यालय' साहित्य की किस विधा का संग्रह है ?", opt: ["नाटक संग्रह", "कहानी संग्रह", "कविता संग्रह", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "11. कौन-सा उपन्यास विनोद कुमार शुक्ल द्वारा लिखित है ?", opt: ["नौकर की कमीज", "कंकाल", "इरावती", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "12. कौन-सी कृति विनोद कुमार शुक्ल की नहीं है ?", opt: ["महाविद्यालय", "पेड़ पर कमरा", "दीवार में एक खिड़की रहती थी", "इन्द्रजाल"], ans: 3 },
+                { q: "13. कौन-सी कृति विनोद कुमार शुक्ल की है ?", opt: ["गंगातट", "घास में दुबका आकाश", "सबकुछ बचा रहेगा", "आँसू"], ans: 2 },
+                { q: "14. विनोद कुमार शुक्ल निराला सृजनपीठ में जून 1994 से जून 1996 तक किस पद पर रहे ?", opt: ["मुख्य साहित्यकार", "अतिथि साहित्यकार", "मुख्य संयोजक", "मुख्य सलाहकार"], ans: 1 },
+                { q: "15. विनोद कुमार शुक्ल को कौन-सा पुरस्कार प्रदान नहीं किया गया है ?", opt: ["दयावती मोदी कवि शिखर सम्मान", "साहित्य अकादमी पुरस्कार", "ज्ञानपीठ पुरस्कार", "रघुवीर सहाय स्मृति पुरस्कार"], ans: 2 },
+                { q: "16. विनोद कुमार शुक्ल का जन्म कहाँ हुआ था ?", opt: ["उत्तर प्रदेश", "बिहार", "मध्य प्रदेश", "छत्तीसगढ़"], ans: 3 },
+                { q: "17. विनोद कुमार शुक्ल का जन्म कब हुआ था ?", opt: ["1 जनवरी, 1937 को", "12 फरवरी, 1937 को", "20 मई, 1934 को", "12 जुलाई, 1944 को"], ans: 0 },
+                { q: "18. कौन-सी कृति विनोद कुमार शुक्ल की नहीं है ?", opt: ["सब कुछ होना बचा रहेगा", "वह आदमी नया गरम कोट पहनकर चला गया विचार की तरह", "नौकर की कमीज", "असाध्य वीणा"], ans: 3 },
+                { q: "19. मेहनतकश और औरत को कवि ने किस रूप में देखा है ?", opt: ["सोना", "लोहा", "पत्थर", "लकड़ी"], ans: 1 },
+                { q: "20. कौन-सी कृति विनोद कुमार शुक्ल की है ?", opt: ["दीवार में एक खिड़की रहती थी", "कुछ पते कुछ चिट्ठियाँ", "हारे को हरिनाम", "मौत मुस्कुराई"], ans: 0 },
+                { q: "21. विनोद कुमार शुक्ल की किस कृति पर मणि कौल ने फिल्म बनाई थी ?", opt: ["दीवार में एक खिड़की रहती थी", "पेड़ पर कमरा", "नौकर की कमीज", "खिलेगा तो देखेंगे"], ans: 2 },
+                { q: "22. पत्नी बिटिया को क्या करती है ?", opt: ["डाँटती है", "पढ़ाती है", "सुलाती है", "समझाती है"], ans: 3 },
+                { q: "23. पिता बिटिया को क्या करता है ?", opt: ["घुमाता है", "खिलाता है", "सिखलाता है", "मारता है"], ans: 2 },
+                { q: "24. 'प्यारे नन्हें बेटे को' कविता में लोहा किसका प्रतीक है ?", opt: ["बंदूक का", "मशीन का", "कर्म का", "धर्म का"], ans: 2 },
+                { q: "25. 'प्यारे नन्हें बेटे को' के रचयिता हैं-", opt: ["नीरज", "बच्चन", "विनोद कुमार शुक्ल", "अशोक वाजपेयी"], ans: 2 },
+                { q: "26. 'प्यारे नन्हें बेटे को' कविता किस संकलन से ली गई है ?", opt: ["'वह आदमी नया गरम कोट पहनकर चला गया विचार की तरह'", "'सबकुछ होना बचा रहेगा' से", "'लगभग जयहिंद' से", "'हिमकिरीटिनी' से"], ans: 0 },
+                { q: "27. 'नौकर की कमीज' क्या है ?", opt: ["कहानी", "प्रबंध काव्य", "संस्मरण", "उपन्यास"], ans: 3 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
